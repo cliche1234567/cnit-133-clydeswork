@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Homework 5 - Part 2</title>
+    <script>
+        function openUrlOnChange() {
+            var selectElement = document.getElementById("selectOnChange");
+            var selectedOption = selectElement.options[selectElement.selectedIndex].value;
+            if (selectedOption !== "") {
+                window.open(selectedOption, "_blank");
+            }
+        }
+
+        function openUrlOnClick() {
+            var selectElement = document.getElementById("selectOnClick");
+            var selectedOption = selectElement.options[selectElement.selectedIndex].value;
+            if (selectedOption !== "") {
+                window.open(selectedOption, "_blank");
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Part 2</h1>
+    <a href="hw5.html">Go back to the main Homework 5 page</a>
+
+    <label for="selectOnChange">Select an option to open a website:</label>
+    <select id="selectOnChange" onchange="openUrlOnChange()">
+        <option value=""></option>
+        <option value="https://www.google.com">Google</option>
+        <option value="https://www.wikipedia.org">Wikipedia</option>
+        <option value="https://www.github.com">GitHub</option>
+    </select>
+
+    <br>
+
+    <label for="selectOnClick">Select an option to open a website:</label>
+    <select id="selectOnClick">
+        <option value=""></option>
+        <option value="https://www.microsoft.com">Microsoft</option>
+        <option value="https://www.apple.com">Apple</option>
+        <option value="https://www.amazon.com">Amazon</option>
+    </select>
+    <button onclick="openUrlOnClick()">Open Website</button>
+
+</body>
+</html>
