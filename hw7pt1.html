@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Style Customization</title>
+  <style>
+    /* Default styles for the main area */
+    #main-area {
+      padding: 20px;
+      border: 1px solid #ccc;
+    }
+  </style>
+  <script>
+    function applyStyles() {
+      var mainArea = document.getElementById('main-area');
+
+      // Background color
+      var colorRadios = document.getElementsByName('background-color');
+      for (var i = 0; i < colorRadios.length; i++) {
+        if (colorRadios[i].checked) {
+          mainArea.style.backgroundColor = colorRadios[i].value;
+          break;
+        }
+      }
+
+      // Underline, bold, italic
+      var underlineCheckbox = document.getElementById('underline');
+      var boldCheckbox = document.getElementById('bold');
+      var italicCheckbox = document.getElementById('italic');
+
+      mainArea.style.textDecoration = underlineCheckbox.checked ? 'underline' : 'none';
+      mainArea.style.fontWeight = boldCheckbox.checked ? 'bold' : 'normal';
+      mainArea.style.fontStyle = italicCheckbox.checked ? 'italic' : 'normal';
+
+      // Font size
+      var fontSizeSelect = document.getElementById('font-size');
+      mainArea.style.fontSize = fontSizeSelect.value;
+    }
+  </script>
+</head>
+<body>
+  <h1>Style Customization</h1>
+
+  <div id="main-area">
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    <p>Nullam rhoncus purus eget sem rutrum ullamcorper.</p>
+    <p>Mauris fermentum felis id nibh convallis, nec malesuada mauris fringilla.</p>
+  </div>
+
+  <form>
+    <p><strong>Select background color:</strong></p>
+    <input type="radio" name="background-color" value="white" checked> White<br>
+    <input type="radio" name="background-color" value="lightgray"> Light Gray<br><br>
+
+    <p><strong>Select text styles:</strong></p>
+    <input type="checkbox" id="underline" onchange="applyStyles()"> Underline<br>
+    <input type="checkbox" id="bold" onchange="applyStyles()"> Bold<br>
+    <input type="checkbox" id="italic" onchange="applyStyles()"> Italic<br><br>
+
+    <p><strong>Select font size:</strong></p>
+    <select id="font-size" onchange="applyStyles()">
+      <option value="1em">1em</option>
+      <option value="1.2em">1.2em</option>
+      <option value="1.5em">1.5em</option>
+    </select>
+  </form>
+
+  <a href="hw7.html">Go back to Homework 7</a>
+</body>
+</html>

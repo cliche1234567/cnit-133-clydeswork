@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Homework Navigation</title>
+  <style>
+    /* Default styles for the navigation */
+    ul.nav-menu {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    ul.nav-menu li {
+      display: inline-block;
+      position: relative;
+    }
+
+    ul.nav-menu li a {
+      display: block;
+      padding: 10px;
+      text-decoration: none;
+    }
+
+    ul.nav-menu li:hover ul.dropdown-menu {
+      display: block;
+    }
+
+    ul.dropdown-menu {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      min-width: 200px;
+      box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+      z-index: 1;
+    }
+
+    ul.dropdown-menu li {
+      display: block;
+    }
+
+    ul.dropdown-menu li a {
+      padding: 10px;
+      text-decoration: none;
+    }
+  </style>
+  <script>
+    // JavaScript code to handle the drop-down menus
+    window.onload = function() {
+      var navItems = document.getElementsByClassName('nav-item');
+
+      for (var i = 0; i < navItems.length; i++) {
+        navItems[i].onmouseover = function() {
+          var dropdownMenu = this.getElementsByClassName('dropdown-menu')[0];
+          dropdownMenu.style.display = 'block';
+        };
+
+        navItems[i].onmouseout = function() {
+          var dropdownMenu = this.getElementsByClassName('dropdown-menu')[0];
+          dropdownMenu.style.display = 'none';
+        };
+      }
+    };
+  </script>
+</head>
+<body>
+  <h1>Homework Navigation</h1>
+
+  <ul class="nav-menu">
+    <li class="nav-item">
+      <a href="hw7.html">Homework 7</a>
+    </li>
+    <li class="nav-item">
+      <a href="#">Homework 2</a>
+      <ul class="dropdown-menu">
+        <li><a href="hw2pt1.html">Part 1</a></li>
+        <li><a href="hw2pt2.html">Part 2</a></li>
+        <li><a href="hw2EC.html">Extra Credit</a></li>
+      </ul>
+    </li>
+    <li class="nav-item">
+      <a href="#">Homework 3</a>
+      <ul class="dropdown-menu">
+        <li><a href="hw3pt1.html">Part 1</a></li>
+        <li><a href="hw3pt2.html">Part 2</a></li>
+        <li><a href="hw3EC.html">Extra Credit</a></li>
+      </ul>
+    </li>
+    <li class="nav-item">
+      <a href="#">Homework 4</a>
+      <ul class="dropdown-menu">
+        <li><a href="hw4pt1.html">Part 1</a></li>
+        <li><a href="hw4pt2">Part 2</a></li>
+        <li><a href="hw4EC.html">Extra Credit</a></li>
+      </ul>
+    </li>
+  </ul>
+</body>
+</html>
