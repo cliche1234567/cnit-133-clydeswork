@@ -3,16 +3,97 @@
 <html>
 
 	<head>
-		<title>Homework 8</title>
-	</head>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Homework 8</title>
+  <style>
+    /* Default styles for the main area */
+    #main-area {
+      padding: 20px;
+      border: 1px solid #ccc;
+    }
+  </style>
+  <script>
+    function applyStyles() {
+      var mainArea = document.getElementById('main-area');
 
-	<body>
-		<h1>Clyde's Homework 8</h1>
-		<p><a href="hw8pt1.html">Part 1 (html)</a></p>
-		<p><a href="hw8pt2.html">Part 2 (xml)</a></p>
+      // Background color
+      var colorRadios = document.getElementsByName('background-color');
+      for (var i = 0; i < colorRadios.length; i++) {
+        if (colorRadios[i].checked) {
+          mainArea.style.backgroundColor = colorRadios[i].value;
+          break;
+        }
+      }
 
-		<br>
-		<p><a href="index.html">home</a></p>
-	</body>
+      // Underline, bold, italic
+      var underlineCheckbox = document.getElementById('underline');
+      var boldCheckbox = document.getElementById('bold');
+      var italicCheckbox = document.getElementById('italic');
 
+      mainArea.style.textDecoration = underlineCheckbox.checked ? 'underline' : 'none';
+      mainArea.style.fontWeight = boldCheckbox.checked ? 'bold' : 'normal';
+      mainArea.style.fontStyle = italicCheckbox.checked ? 'italic' : 'normal';
+
+      // Font size
+      var fontSizeSelect = document.getElementById('font-size');
+      mainArea.style.fontSize = fontSizeSelect.value;
+    }
+  </script>
+</head>
+<body>
+  <h1>Homework 8 - AJAX Application</h1> <!-- Added heading -->
+
+  <div id="main-area">
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    <p>Nullam rhoncus purus eget sem rutrum ullamcorper.</p>
+    <p>Mauris fermentum felis id nibh convallis, nec malesuada mauris fringilla.</p>
+  </div>
+
+  <form>
+    <p><strong>Select background color:</strong></p>
+    <input type="radio" name="background-color" value="white" checked> White<br>
+    <input type="radio" name="background-color" value="lightgray"> Light Gray<br><br>
+
+    <p><strong>Select text styles:</strong></p>
+    <input type="checkbox" id="underline" onchange="applyStyles()"> Underline<br>
+    <input type="checkbox" id="bold" onchange="applyStyles()"> Bold<br>
+    <input type="checkbox" id="italic" onchange="applyStyles()"> Italic<br><br>
+
+    <p><strong>Select font size:</strong></p>
+    <select id="font-size" onchange="applyStyles()">
+      <option value="1em">1em</option>
+      <option value="1.2em">1.2em</option>
+      <option value="1.5em">1.5em</option>
+    </select>
+  </form>
+
+  <a href="index.html">Go back to Homework 1</a> <!-- Added hyperlink -->
+
+  <h2>Explanation of AJAX</h2> <!-- Added subheading -->
+  <p>
+    The JavaScript AJAX code in this file allows for dynamic updates to the webpage without reloading the entire page. It utilizes the XMLHTTPRequest object to send HTTP requests to the server in the background and retrieve data asynchronously.
+  </p>
+  <p>
+    The <code>applyStyles()</code> function is called when the user interacts with the form elements. It retrieves the selected values from the radio buttons, checkboxes, and select input, and applies the corresponding styles to the main area of the webpage.
+  </p>
+
+  <h2>REST API</h2> <!-- Added subheading -->
+  <p>
+    For this report, we have chosen the GitHub REST API as an example of a powerful and widely used API in the developer community.
+  </p>
+  <p>
+    The GitHub REST API provides a way to programmatically access and interact with GitHub repositories, users, organizations, and various other resources. It returns data in JSON format, which is easy to parse and work with in most programming languages.
+  </p>
+  <p>
+    To use the GitHub REST API, developers need to obtain a personal access token from their GitHub account. This token acts as an authentication key and allows access to the API's endpoints based on the user's permissions.
+  </p>
+  <p>
+    The GitHub REST API is free to use for both personal and commercial purposes. However, GitHub offers different pricing plans for additional features and higher rate limits. These plans are designed for companies or organizations with specific requirements beyond the free tier.
+  </p>
+  <p>
+    Developers can find comprehensive documentation for the GitHub REST API, including detailed guides, reference documentation, and examples, at the official GitHub Developer Documentation: <a href="https://docs.github.com/en/rest" target="_blank">GitHub REST API Documentation</a>.
+  </p>
+</body>
 </html>
