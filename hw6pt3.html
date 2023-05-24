@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Homework 6</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#phoneNumber').mask("(999) 999-9999");
+        });
+
+        function processPhoneNumber() {
+            var phoneNumber = $('#phoneNumber').val();
+            var outputAreaCode = $('#outputAreaCode');
+            var outputFirstThree = $('#outputFirstThree');
+            var outputLastFour = $('#outputLastFour');
+            var error = $('#error');
+
+            // Remove non-digit characters
+            var cleanedPhoneNumber = phoneNumber.replace(/\D/g, '');
+
+            // Validate the phone number format
+            var validPhoneNumber = /^\d{10}$/;
+            if (!validPhoneNumber.test(cleanedPhoneNumber)) {
+                error.text("Please enter the phone number in the format (999) 999-9999");
+                outputAreaCode.val('');
+                outputFirstThree.val('');
+                outputLastFour.val('');
+                return;
+            }
+
+            // Extract the area code, first three digits, and last four digits
+            var areaCode = cleanedPhoneNumber.substring(0, 3);
+            var firstThree = cleanedPhoneNumber.substring(3, 6);
+            var lastFour = cleanedPhoneNumber.substring(6, 10);
+
+            // Display the results
+            outputAreaCode.val(areaCode);
+            outputFirstThree.val(firstThree);
+            outputLastFour.val(lastFour);
+            error.text('');
+        }
+
+        function clearForm() {
+            $('#phoneNumber').val('');
+            $('#outputAreaCode').val('');
+            $('#outputFirstThree').val('');
+            $('#outputLastFour').val('');
+            $('#error').text('');
+        }
+    </script>
+</head>
+<body>
+    <h1>Homework 6</h1>
+
+    <form>
+        <label for="phoneNumber">Phone Number:</label>
+        <input type="text" id="phoneNumber" required>
+
+        <br>
+
+        <label for="outputAreaCode">Area Code:</label>
+        <input type="text" id="outputAreaCode" readonly>
+
+        <br>
+
+        <label for="outputFirstThree">First Three Digits:</label>
+        <input type="text" id="outputFirstThree" readonly>
+
+        <br>
+
+        <label for="outputLastFour">Last Four Digits:</label>
+        <input type="text" id="outputLastFour" readonly>
+
+        <br>
+
+        <button type="button" onclick="processPhoneNumber()">Start Process</button>
+        <button type="button" onclick="clearForm()">Clear</button>
+    </form>
+
+    <div id="error"></div>
+
+    <a href="hw6.html">Go back to the main page of Homework 6</a>
+</body>
+</html>

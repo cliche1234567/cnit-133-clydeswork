@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Homework 6</title>
+    <script>
+        function calculate() {
+            var inputNumber = parseFloat(document.getElementById("inputNumber").value);
+            var output = document.getElementById("output");
+
+            if (isNaN(inputNumber) || inputNumber.toFixed(4).toString().split('.')[1].length < 4) {
+                output.innerText = "You need to type a number with at least 4 decimals, please try again";
+            } else {
+                var roundedInteger = Math.round(inputNumber);
+                var roundedSqrt = Math.round(Math.sqrt(inputNumber));
+                var roundedTenth = inputNumber.toFixed(1);
+                var roundedHundredth = inputNumber.toFixed(2);
+                var roundedThousandth = inputNumber.toFixed(3);
+
+                output.innerText = "You typed number " + inputNumber.toFixed(4) +
+                    "\nRounded to the nearest integer = " + roundedInteger +
+                    "\nSquare root rounded to integer = " + roundedSqrt +
+                    "\nRounded to the nearest 10th position = " + roundedTenth +
+                    "\nRounded to the nearest 100th position = " + roundedHundredth +
+                    "\nRounded to the nearest 1000th position = " + roundedThousandth;
+            }
+        }
+
+        function clearForm() {
+            document.getElementById("inputNumber").value = "";
+            document.getElementById("output").innerText = "";
+        }
+    </script>
+</head>
+<body>
+    <h1>Homework 6</h1>
+
+    <form>
+        <label for="inputNumber">Enter a number with 4 decimals:</label>
+        <input type="number" step="any" id="inputNumber" required>
+
+        <br>
+
+        <button type="button" onclick="calculate()">Submit</button>
+        <button type="button" onclick="clearForm()">Clear</button>
+    </form>
+
+    <div id="output"></div>
+
+    <a href="hw6.html">Go back to the main page of Homework 6</a>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Homework 6</title>
+    <script>
+        function searchCharacter() {
+            var content = document.getElementById("content").value;
+            var character = document.getElementById("character").value.toLowerCase();
+            var output = document.getElementById("output");
+
+            var characterCount = content.toLowerCase().split(character).length - 1;
+
+            if (characterCount > 0) {
+                output.innerText = "The character '" + character + "' shows up " + characterCount + " time(s) in the content.";
+            } else {
+                output.innerText = "";
+
+                var searchNotFoundWindow = window.open("", "Search Not Found", "width=300,height=100");
+                searchNotFoundWindow.document.write("<h2>Search character '" + character + "' not found in the content you typed.</h2>");
+                searchNotFoundWindow.document.write("<button onclick='window.close()'>Close Window</button>");
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Homework 6</h1>
+
+    <form>
+        <label for="content">Long Content:</label>
+        <textarea id="content" rows="5" cols="30" required></textarea>
+
+        <br>
+
+        <label for="character">Single Character:</label>
+        <input type="text" id="character" maxlength="1" required>
+
+        <br>
+
+        <button type="button" onclick="searchCharacter()">Submit</button>
+    </form>
+
+    <div id="output"></div>
+
+    <a href="hw6.html">Go back to the main page of Homework 6</a>
+</body>
+</html>
