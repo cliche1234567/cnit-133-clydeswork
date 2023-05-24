@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Temperature Conversion</title>
+  <script>
+    function convertToFahrenheit() {
+      var celsius = parseFloat(document.getElementById("temperature").value);
+      if (!isNaN(celsius)) {
+        var fahrenheit = (9 / 5 * celsius) + 32;
+        document.getElementById("result").value = celsius.toFixed(0) + "°C is " + fahrenheit.toFixed(0) + "°F";
+        document.getElementById("error").textContent = "";
+      } else {
+        document.getElementById("error").textContent = "Invalid input. Please enter a valid temperature in Celsius.";
+        document.getElementById("result").value = "";
+      }
+    }
+
+    function convertToCelsius() {
+      var fahrenheit = parseFloat(document.getElementById("temperature").value);
+      if (!isNaN(fahrenheit)) {
+        var celsius = 5 / 9 * (fahrenheit - 32);
+        document.getElementById("result").value = fahrenheit.toFixed(0) + "°F is " + celsius.toFixed(0) + "°C";
+        document.getElementById("error").textContent = "";
+      } else {
+        document.getElementById("error").textContent = "Invalid input. Please enter a valid temperature in Fahrenheit.";
+        document.getElementById("result").value = "";
+      }
+    }
+
+    function clearForm() {
+      document.getElementById("temperature").value = "";
+      document.getElementById("result").value = "";
+      document.getElementById("error").textContent = "";
+    }
+  </script>
+</head>
+<body>
+  <h1>Temperature Conversion</h1>
+  <form>
+    <label for="temperature">Temperature:</label>
+    <input type="number" id="temperature" name="temperature" required>
+    <br>
+    <label for="result">Result:</label>
+    <textarea id="result" name="result" readonly></textarea>
+    <br>
+    <button type="button" onclick="convertToFahrenheit()">Celsius to Fahrenheit</button>
+    <button type="button" onclick="convertToCelsius()">Fahrenheit to Celsius</button>
+    <button type="button" onclick="clearForm()">Clear</button>
+    <p id="error" style="color: red;"></p>
+  </form>
+</body>
+</html>

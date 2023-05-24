@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sales Commission Calculator</title>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+    $(document).ready(function() {
+      $('#salesperson').tooltip({
+        content: 'Please make sure that the salesperson\'s name is spelled correctly'
+      });
+    });
+
+    function calculateEarnings() {
+      var item1Qty = parseInt(document.getElementById('item1Qty').value);
+      var item2Qty = parseInt(document.getElementById('item2Qty').value);
+      var item3Qty = parseInt(document.getElementById('item3Qty').value);
+      var item4Qty = parseInt(document.getElementById('item4Qty').value);
+
+      if (isNaN(item1Qty) || isNaN(item2Qty) || isNaN(item3Qty) || isNaN(item4Qty)) {
+        alert('Please enter valid quantities (numbers only).');
+        return;
+      }
+
+      if (item1Qty < 0 || item2Qty < 0 || item3Qty < 0 || item4Qty < 0) {
+        alert('Quantities should be greater than or equal to zero.');
+        return;
+      }
+
+      var item1Total = item1Qty * 20.99;
+      var item2Total = item2Qty * 12.75;
+      var item3Total = item3Qty * 9.95;
+      var item4Total = item4Qty * 35.89;
+
+      var totalSales = item1Total + item2Total + item3Total + item4Total;
+      var commission = totalSales * 0.09;
+      var totalEarnings = commission + 250;
+
+      document.getElementById('item1Total').value = item1Total.toFixed(2);
+      document.getElementById('item2Total').value = item2Total.toFixed(2);
+      document.getElementById('item3Total').value = item3Total.toFixed(2);
+      document.getElementById('item4Total').value = item4Total.toFixed(2);
+
+      document.getElementById('totalSales').value = totalSales.toFixed(2);
+      document.getElementById('commission').value = commission.toFixed(2);
+      document.getElementById('totalEarnings').value = totalEarnings.toFixed(2);
+    }
+  </script>
+  <style>
+    table {
+      margin: 20px auto;
+      border-collapse: collapse;
+    }
+
+    table, th, td {
+      border: 1px solid black;
+      padding: 5px;
+    }
+
+    th {
+      text-align: center;
+    }
+
+    input[type="number"] {
+      text-align: right;
+    }
+  </style>
+</head>
+<body>
+  <h1>Sales Commission Calculator</h1>
+
+  <form>
+    <table>
+      <tr>
+        <th colspan="2">Salesperson Information</th>
+      </tr>
+      <tr>
+        <td>Salesperson Name:</td>
+        <td><input type="text" id="salesperson" name="salesperson" title=""></td>
+      </tr>
+    </table>
+
+    <table>
+      <tr>
+        <th>Item</th>
+        <th>Qty Sold</th>
+        <th>Price</th>
+        <th>Total</th>
+      </tr>
+      <tr>
+        <td>Item 1</td>
+        <td><input type="number" id="item1Qty" name="item1Qty" min="0"></td>
+        <td>$20.99</td>
+        <td><input type="text" id="item1Total" readonly></td>
+      </tr>
+      <tr>
+        <td>Item 2</td>
+        <td><input type="number" id="item2Qty" name="item2Qty" min="0"></td>
+        <td>$12.75</td>
+        <td><input type="text" id="item2Total" readonly></td>
+      </tr>
+      <tr>
+        <td>Item 3</td>
+        <td><input type="number" id="item3Qty" name="item3Qty" min="0"></td>
+        <td>$9.95</td>
+        <td><input type="text" id="item3Total" readonly></td>
+      </tr>
+      <tr>
+        <td>Item 4</td>
+        <td><input type="number" id="item4Qty" name="item4Qty" min="0"></td>
+        <td>$35.89</td>
+        <td><input type="text" id="item4Total" readonly></td>
+      </tr>
+    </table>
+
+    <table>
+      <tr>
+        <td>Total Sold:</td>
+        <td><input type="text" id="totalSales" readonly></td>
+      </tr>
+      <tr>
+        <td>Commission:</td>
+        <td><input type="text" id="commission" readonly></td>
+      </tr>
+      <tr>
+        <td>Total Earnings:</td>
+        <td><input type="text" id="totalEarnings" readonly></td>
+      </tr>
+    </table>
+
+    <button type="button" onclick="calculateEarnings()">Calculate Earnings</button>
+  </form>
+</body>
+</html>
