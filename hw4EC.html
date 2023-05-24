@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Hollow Square</title>
+</head>
+<body>
+  <h1>Hollow Square Generator</h1>
+
+  <form id="square-form">
+    <label for="number-input">Enter a number (2-10):</label>
+    <input type="number" id="number-input" min="2" max="10">
+    <button type="button" id="process-button">Process</button>
+    <button type="button" id="clear-button">Clear</button>
+  </form>
+
+  <div id="square-result"></div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var form = document.getElementById('square-form');
+      var numberInput = document.getElementById('number-input');
+      var processButton = document.getElementById('process-button');
+      var clearButton = document.getElementById('clear-button');
+      var squareResult = document.getElementById('square-result');
+
+      processButton.addEventListener('click', function() {
+        var number = parseInt(numberInput.value);
+
+        if (isNaN(number) || number < 2 || number > 10) {
+          squareResult.textContent = 'Invalid number! Please enter a number between 2 and 10.';
+          return;
+        }
+
+        var square = '';
+        for (var i = 0; i < number; i++) {
+          for (var j = 0; j < number; j++) {
+            if (i === 0 || i === number - 1 || j === 0 || j === number - 1) {
+              square += '* ';
+            } else {
+              square += '  ';
+            }
+          }
+          square += '\n';
+        }
+
+        squareResult.textContent = square;
+      });
+
+      clearButton.addEventListener('click', function() {
+        numberInput.value = '';
+        squareResult.textContent = '';
+      });
+    });
+  </script>
+</body>
+</html>

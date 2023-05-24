@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Number Calculations</title>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <style>
+    #draggable {
+      width: 150px;
+      height: 150px;
+      padding: 0.5em;
+      background-color: #ccc;
+    }
+    #droppable {
+      width: 300px;
+      height: 300px;
+      padding: 0.5em;
+      background-color: #f0f0f0;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Number Calculations</h1>
+
+  <h2>Part 1: For Loop</h2>
+  <div id="part1-results"></div>
+
+  <h2>Part 2: While Loop</h2>
+  <div id="part2-results"></div>
+
+  <h2>Drag and Drop</h2>
+  <div id="draggable" class="ui-widget-content">
+    <p>Drag me!</p>
+  </div>
+  <div id="droppable" class="ui-widget-header">
+    <p>Drop here!</p>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+    $(document).ready(function() {
+      // Part 1: For Loop
+      var numbers1 = [];
+      var product1 = 1;
+      var sum1 = 0;
+
+      for (var i = 5; i <= 25; i += 4) {
+        numbers1.push(i);
+        product1 *= i;
+        sum1 += i;
+      }
+
+      var result1 = "The result of " + numbers1.join(" * ") + " is " + product1.toLocaleString() + ".<br>";
+      result1 += "The result of " + numbers1.join(" + ") + " is " + sum1.toLocaleString() + ".";
+      $("#part1-results").html(result1);
+
+      // Part 2: While Loop
+      var numbers2 = [];
+      var product2 = 1;
+      var sum2 = 0;
+      var j = 3;
+
+      while (j <= 18) {
+        numbers2.push(j);
+        product2 *= j;
+        sum2 += j;
+        j += 3;
+      }
+
+      var result2 = "The result of " + numbers2.join(" * ") + " is " + product2.toLocaleString() + ".<br>";
+      result2 += "The result of " + numbers2.join(" + ") + " is " + sum2.toLocaleString() + ".";
+      $("#part2-results").html(result2);
+
+      // Drag and Drop
+      $("#draggable").draggable();
+      $("#droppable").droppable({
+        drop: function(event, ui) {
+          $(this)
+            .addClass("ui-state-highlight")
+            .find("p")
+            .html("Dropped!");
+        }
+      });
+    });
+  </script>
+</body>
+</html>
